@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encontre Seu Destino - Home</title>
+  <link rel="stylesheet" type="text/css" href="/codigo/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/codigo/css/util.css">
+  <link href="/projetotiaw-encontre-seu-destino-master/codigo/css/login.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+
+   <!--NavBar-->
+
+   <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src= "https://drive.google.com/uc?export=download&id=1aXBWmrAdCzO7lVD5pLbMToTenYj-zNL_" alt="" width="180" height="90" class="d-inline-block align-text-center">
+    
+      </a>
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Buscar destino" aria-label="Search">
+      </br></br>
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+      </form>
+      <div style="text-align: right;"> 
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="catalago.html">Pacotes</a>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="map.html">Nosso Mapa</a>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="login.html">Conectar</a>
+
+           
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="cadastro.html"></a> <!-- oculto sem texto -->     
+                 </li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <htmlscript src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+  crossorigin="anonymous"></script>
+
+</head>
+
+
+
+  
+<body>
+  <div class="limiter">
+		
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					
+					<img src="https://drive.google.com/uc?export=download&id=1aXBWmrAdCzO7lVD5pLbMToTenYj-zNL_" alt="" width="280" height="130" class="d-inline-block align-text-center">
+
+				</div>
+
+				<form class="login100-form validate-form">
+					<span class="login100-form-title">
+						Cadastro
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email" id="login1">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+          <!-- inserção do professor para requisito de local -->
+          <div class="wrap-input100 validate-input" data-validate = "Escolha um estado">
+						<span> Estado: </span><select id="selectEstado">
+              <option value="Bahia">BA</option>
+              <option value="Maranão">MA</option>
+              <option value="Rio de Janeiro">RJ</option>
+              <option value="Roraima">RR</option>
+            </select>
+           
+						</span>
+					</div>
+          <!-- fim da inserção -->
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Senha" id="Senha1">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+            <!-- correção do professor -->
+            <button class="login100-form-btn" input type="button" onclick="cadastroCorreto();"></button>
+            
+            <!-- código do repositório
+						<button class="login100-form-btn" input type="submit" onclick="logar(); return fals">
+             --> 
+							Crie sua conta
+						</button>
+					</div>
+				</form>
+        <script>
+          //correção do professor
+           function cadastroCorreto(){
+            let email = document.getElementById("login1").value
+            let senha = document.getElementById("Senha1").value
+            let estado = document.getElementById("selectEstado").value
+           
+            let cadastro = JSON.parse(localStorage.getItem("cadastroPessoas"))
+            if (!cadastro) cadastro = [];
+
+            let novoUsuario = {
+              emailCadastro: email,
+              senhaCadastro: senha,
+              estadoCadastro: estado
+            }
+
+            cadastro.push(novoUsuario)
+
+            localStorage.setItem("cadastroPessoas", JSON.stringify(cadastro))
+            alert("Usuário "+email+" cadastrado.")
+          } 
+
+
+
+          // fim correção
+
+          //abaixo código do repositório
+          function logar(){
+
+            var login = document.getElementById('login1').value;
+            var senha = document.getElementById('Senha1').value;
+
+
+            if(login == "admin" && senha == "admin"){
+              alert('Login efetuado com sucesso!');
+              location.href = "perfil.html";
+            }else{
+              alert('Agradecemos, em breve vamos te enviar seu login e senha para que seja feito o seu primeiro acesso!');
+              location.href = "login.html";
+            }
+          }
+        </script>
+			</div>
+		</div>
+	</div>
+</body>
